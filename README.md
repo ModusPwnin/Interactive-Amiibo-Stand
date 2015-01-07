@@ -1,7 +1,7 @@
 Interactive-Amiibo-Stand
 ========================
 
-Here is the code I'm currently using for my Amiibo stand, there are currently 2 versions, v1 and v2.
+Here is the code I'm currently using for my Amiibo stand! There are currently 2 versions, v1 and v2.
 
 V1 will recognize an Amiibo and play a sound file once.
 
