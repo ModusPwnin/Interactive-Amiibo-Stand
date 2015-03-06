@@ -6,7 +6,7 @@
 
 //Loading Strings into PROGMEM to save RAM
 #include <avr/pgmspace.h>
-//Character Intros
+//Character Intro File Names
 prog_char string_0[] PROGMEM = "cfalc.wav";
 prog_char string_1[] PROGMEM = "samus.wav";
 prog_char string_2[] PROGMEM = "lmac.wav";
@@ -35,8 +35,15 @@ prog_char string_24[] PROGMEM = "sonic.wav";
 prog_char string_25[] PROGMEM = "rosa.wav";
 prog_char string_26[] PROGMEM = "mknight.wav";
 prog_char string_27[] PROGMEM = "shulk.wav";
-prog_char string_28[] PROGMEM = "shiek.wav";
+prog_char string_28[] PROGMEM = "sheik.wav";
 prog_char string_29[] PROGMEM = "ike.wav";
+  //Wave 4
+prog_char string_60[] PROGMEM = "robin.wav";
+prog_char string_61[] PROGMEM = "lucina.wav";
+prog_char string_62[] PROGMEM = "char.wav";
+prog_char string_63[] PROGMEM = "wario.wav";
+prog_char string_64[] PROGMEM = "pacman.wav";
+prog_char string_65[] PROGMEM = "ness.wav";
 //Songs
 prog_char string_30[] PROGMEM = "cfalc_s.wav";
 prog_char string_31[] PROGMEM = "samus_s.wav";
@@ -64,14 +71,21 @@ prog_char string_52[] PROGMEM = "bowser_s.wav";
 prog_char string_53[] PROGMEM = "mega_s.wav";
 prog_char string_54[] PROGMEM = "sonic_s.wav";
 prog_char string_55[] PROGMEM = "rosa_s.wav";
-prog_char string_56[] PROGMEM = "metak_s.wav";
+prog_char string_56[] PROGMEM = "mknight_s.wav";
 prog_char string_57[] PROGMEM = "shulk_s.wav";
-prog_char string_58[] PROGMEM = "shiek_s.wav";
+prog_char string_58[] PROGMEM = "sheik_s.wav";
 prog_char string_59[] PROGMEM = "ike_s.wav";
+  //Wave 4
+prog_char string_66[] PROGMEM = "robin_s.wav";
+prog_char string_67[] PROGMEM = "lucina_s.wav";
+prog_char string_68[] PROGMEM = "char_s.wav";
+prog_char string_69[] PROGMEM = "wario_s.wav";
+prog_char string_70[] PROGMEM = "pacman_s.wav";
+prog_char string_71[] PROGMEM = "ness_s.wav";
 
 // Then set up a table to refer to your strings.
 
-PROGMEM const char *string_table[] = 	   // change "string_table" name to suit
+PROGMEM const char *string_table[] = 	   
 {   
   string_0,
   string_1,
@@ -132,9 +146,21 @@ PROGMEM const char *string_table[] = 	   // change "string_table" name to suit
   string_56,
   string_57,
   string_58,
-  string_59,  };
+  string_59,
+  string_60,
+  string_61,
+  string_62,
+  string_63,
+  string_64,
+  string_65,
+  string_66,
+  string_67,
+  string_68,
+  string_69,
+  string_70,
+  string_71,  };
 
-char buffer[59];
+char buffer[71];
 
 #define IRQ 6 // this trace must be cut and rewired!
 #define RESET 8
@@ -152,7 +178,7 @@ WaveHC wave; // This is the only wave (audio) object, since we will only play on
 #define error(msg) error_P(PSTR(msg))
 
 //Setup()
-//uint32_t versiondata;
+uint32_t versiondata;
 
 //My Added Variables
 uint32_t lastcard = 0;
@@ -182,13 +208,13 @@ void setup() {
   if (!root.openRoot(vol)) {
     error("Couldn't open dir");
   }
-  /*
+  
   PgmPrintln("Files found:");
   root.ls();
-  */
+  
   // find Adafruit RFID/NFC shield
   nfc.begin();
-/*
+
   versiondata = nfc.getFirmwareVersion();
   if (! versiondata) {
     Serial.print(F("Didn't find PN53x board"));
@@ -198,7 +224,7 @@ void setup() {
   Serial.print(F("Found chip PN5")); Serial.println((versiondata>>24) & 0xFF, HEX);
   Serial.print(F("Firmware ver. ")); Serial.print((versiondata>>16) & 0xFF, DEC);
   Serial.print('.'); Serial.println((versiondata>>8) & 0xFF, DEC);
-  */
+  
   // configure board to read RFID tags
   nfc.SAMConfig();
   
@@ -213,11 +239,11 @@ unsigned digit = 0;
 
 void loop() {
   
-  //Memory Checker
+  /*Memory Checker
   
   Serial.print(F("Memory Available = "));
   Serial.println(freeMemory());
-  
+  */
   
   // wait for RFID card to show up!
   Serial.println(F("Waiting for an ISO14443A Card ..."));
@@ -246,16 +272,18 @@ void loop() {
     (lastcard = currentcard);
     (currentcard = cardidentifier);
     
-    Serial.print(F("Last Card:"));
+    Serial.print(F("Last Card:    #"));
     Serial.println(lastcard);
-    Serial.print(F("Current Card:"));
-    Serial.println(currentcard);
+    //Serial.print(F("Current Card:"));
+    //Serial.println(currentcard);
     
   // repeat this for loop as many times as you have RFID cards
     if (currentcard == lastcard) {
-      
+      /*
+        If there is no song playing, play a song.
+      */
       if (songplaying == false) {
-        
+        //Captain Falcon Song
         if (cardidentifier == 3266796292)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[30])));
           playfile(buffer);
@@ -263,7 +291,7 @@ void loop() {
             songplaying = true;
           }
         }
-        
+        //Samus Song
         if (cardidentifier == 1519730948)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[31])));
           playfile(buffer);
@@ -271,6 +299,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Little Mac Song
         if (cardidentifier == 3125957124)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[32])));
           playfile(buffer);
@@ -278,20 +307,23 @@ void loop() {
             songplaying = true;
           }
         }
+        //Fox Song
         if (cardidentifier == 2456861188)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[33])));
           playfile(buffer);
           if (wave.isplaying) {
             songplaying = true;
           }
-        } 
+        }
+       //Wii Fit Song 
         if (cardidentifier == 3270290948)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[34])));
           playfile(buffer);
           if (wave.isplaying) {
             songplaying = true;
           }
-        }         
+        }
+        //Villager Song        
         if (cardidentifier == 3398987780)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[35])));
           playfile(buffer);
@@ -299,6 +331,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Marth Song
         if (cardidentifier == 2186368004)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[36])));
           playfile(buffer);
@@ -306,6 +339,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Yoshi Song
         if (cardidentifier == 2057060100)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[37])));
           playfile(buffer);
@@ -313,6 +347,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Pit Song
         if (cardidentifier == 581738756)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[38])));
           playfile(buffer);
@@ -320,6 +355,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Kirby Song
         if (cardidentifier == 1648956676)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[39])));
           playfile(buffer);
@@ -327,6 +363,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Pikachu Song
         if (cardidentifier == 1653835268)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[40])));
           playfile(buffer);
@@ -334,6 +371,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Link Song
         if (cardidentifier == 719015684)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[41])));
           playfile(buffer);
@@ -341,6 +379,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Luigi Song
         if (cardidentifier == 3264737284)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[42])));
           playfile(buffer);
@@ -348,6 +387,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Luigi Song #2
         if (cardidentifier == 3259030020)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[43])));
           playfile(buffer);
@@ -355,6 +395,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Diddy Song
         if (cardidentifier == 851602436)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[44])));
           playfile(buffer);
@@ -362,6 +403,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //DK Song
         if (cardidentifier == 3673369860)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[45])));
           playfile(buffer);
@@ -369,6 +411,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Peach Song
         if (cardidentifier == 2458258948)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[46])));
           playfile(buffer);
@@ -376,6 +419,7 @@ void loop() {
             songplaying = true;
           }
         }
+        //Zelda Song
         if (cardidentifier == 2588707844)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[47])));
           playfile(buffer);
@@ -383,8 +427,97 @@ void loop() {
             songplaying = true;
           }
         }
+        //Mario Song
         if (cardidentifier == 3401629188)      
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[48])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Toonlink Song
+        if (cardidentifier == 1651518724)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[49])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Dedede Song
+        if (cardidentifier == 3939409924)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[50])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Lucario Song
+        if (cardidentifier == 2598474500)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[51])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Bowser Song
+        if (cardidentifier == 3802009348)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[52])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Mega Man Song
+        if (cardidentifier == 2057979908)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[53])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Sonic Song
+        if (cardidentifier == 1657846020)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[54])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Rosalina Song
+        if (cardidentifier == 3669460740)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[55])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //MetaKnight Song
+        if (cardidentifier == 000)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[56])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Shulk Song
+        if (cardidentifier == 2052664580)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[57])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Sheik Song
+        if (cardidentifier == 1257799684)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[58])));
+          playfile(buffer);
+          if (wave.isplaying) {
+            songplaying = true;
+          }
+        }
+        //Ike Song
+        if (cardidentifier == 38002692)      
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[59])));
           playfile(buffer);
           if (wave.isplaying) {
             songplaying = true;
@@ -396,108 +529,166 @@ void loop() {
         songplaying = false;
       }  
     }
-    
+    /*
+      There is no song playing, play the intro sequence!
+    */
     else {
-      
+      //Captain Falcon
       if (cardidentifier == 3266796292) 
       {
         strcpy_P(buffer, (char*)pgm_read_word(&(string_table[0])));
         playcomplete(buffer);
       }
-      
+      //Samus
       if (cardidentifier == 1519730948) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[1])));
         playcomplete(buffer);
       }
-      
+      //Little Mac
       if (cardidentifier == 3125957124) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[2])));
         playcomplete(buffer);
       }
-      
+      //Fox
       if (cardidentifier == 2456861188) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[3])));
         playcomplete(buffer);
       }
-      
+      //Wii Fit
       if (cardidentifier == 3270290948) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[4])));
         playcomplete(buffer);
       }
-      
+      //Villager
       if (cardidentifier == 3398987780) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[5])));
         playcomplete(buffer);
       }
-      
+      //Marth
       if (cardidentifier == 2186368004) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[6])));
         playcomplete(buffer);
       }
-      
+      //Yoshi
       if (cardidentifier == 2057060100) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[7])));
         playcomplete(buffer);
       }
-      
+      //Pit
       if (cardidentifier == 581738756) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[8])));
         playcomplete(buffer);
       }
-      
+      //Kirby
       if (cardidentifier == 1648956676) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[9])));
         playcomplete(buffer);
       }
-      
+      //Pikachu
       if (cardidentifier == 1653835268) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[10])));
         playcomplete(buffer);
       }
-      
+      //Link
       if (cardidentifier == 719015684) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[11])));
         playcomplete(buffer);
       }
-      
+      //Luigi
       if (cardidentifier == 3264737284) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[12])));
         playcomplete(buffer);
       }
-      
+      //Luigi 2
       if (cardidentifier == 3259030020) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[13])));
         playcomplete(buffer);
       }
-      
+      //Diddy Kong
       if (cardidentifier == 851602436) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[14])));
         playcomplete(buffer);
       }
-      
+      //DK
       if (cardidentifier == 3673369860) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[15])));
         playcomplete(buffer);
       }
-      
+      //Peach
       if (cardidentifier == 2458258948) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[16])));
         playcomplete(buffer);
       }
-      
+      //Zelda
       if (cardidentifier == 2588707844) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[17])));
         playcomplete(buffer);
       }
-      
+      //Mario
       if (cardidentifier == 3401629188) 
       {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[18])));
         playcomplete(buffer);
       }
+      //Toon Link
+      if (cardidentifier == 1651518724) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[19])));
+        playcomplete(buffer);
+      }
+      //Dedede
+      if (cardidentifier == 3939409924) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[20])));
+        playcomplete(buffer);
+      }
+      //Lucario
+      if (cardidentifier == 2598474500) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[21])));
+        playcomplete(buffer);
+      }
+      //Bowser
+      if (cardidentifier == 3802009348) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[22])));
+        playcomplete(buffer);
+      }
+      //Mega Man
+      if (cardidentifier == 2057979908) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[23])));
+        playcomplete(buffer);
+      }
+      //Sonic
+      if (cardidentifier == 1657846020) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[24])));
+        playcomplete(buffer);
+      }
+      //Rosalina
+      if (cardidentifier == 3669460740) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[25])));
+        playcomplete(buffer);
+      }
+      //Meta Knight
+      if (cardidentifier == 000) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[26])));
+        playcomplete(buffer);
+      }
+      //Shulk
+      if (cardidentifier == 2052664580) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[27])));
+        playcomplete(buffer);
+      }
+      //Sheik
+      if (cardidentifier == 1257799684) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[28])));
+        playcomplete(buffer);
+      }
+      //Ike
+      if (cardidentifier == 38002692) 
+      {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[29])));
+        playcomplete(buffer);
+      }
     }
   }
+  //If the Amiibo is gone, stop the song.
   else {
-    if (currentcard == lastcard) {//If the character song is playing, stop it.
+    if (currentcard == lastcard) {
       wave.stop();
     }  
     lastcard = 0;
