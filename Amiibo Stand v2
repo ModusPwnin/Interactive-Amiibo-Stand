@@ -2,7 +2,7 @@
 #include <WaveUtil.h>
 #include <Wire.h>
 #include <Adafruit_NFCShield_I2C.h>
-#include <MemoryFree.h>
+//#include <MemoryFree.h>
 
 //Loading Strings into PROGMEM to save RAM
 #include <avr/pgmspace.h>
