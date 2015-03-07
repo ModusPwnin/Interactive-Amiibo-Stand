@@ -246,7 +246,7 @@ void loop() {
   */
   
   // wait for RFID card to show up!
-  Serial.println(F("Waiting for an ISO14443A Card ..."));
+  Serial.println(F("Waiting for an Amiibo ..."));
 
     
   // Wait for an ISO14443A type cards (Mifare, etc.). When one is found
@@ -259,7 +259,7 @@ void loop() {
   if (success) {
     // Found a card!
 
-    Serial.print(F("Card detected #"));
+    Serial.print(F("Amiibo detected #"));
     // turn the four byte UID of a mifare classic into a single variable #
     cardidentifier = uid[3];
     cardidentifier <<= 8; cardidentifier |= uid[2];
@@ -272,7 +272,7 @@ void loop() {
     (lastcard = currentcard);
     (currentcard = cardidentifier);
     
-    Serial.print(F("Last Card:    #"));
+    Serial.print(F("Last Amiibo:    #"));
     Serial.println(lastcard);
     //Serial.print(F("Current Card:"));
     //Serial.println(currentcard);
