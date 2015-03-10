@@ -14,4 +14,4 @@ as well as the NFC libraries:        https://github.com/adafruit/Adafruit_NFCShi
 
 Enjoy!
 
-Interactive Amiibo Stand
+/u/ModusPwnin
