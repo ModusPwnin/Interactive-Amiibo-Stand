@@ -297,7 +297,8 @@ void loop()
       CID <<= 8; CID |= charID[2];
       CID <<= 8; CID |= charID[1];
       CID <<= 8; CID |= charID[0];
-      //Serial.println(CID);
+      Serial.println("Character Number: ");
+      Serial.println(CID);
     
     
       if (currentcard == lastcard) 
@@ -508,7 +509,7 @@ void loop()
             }
           }
           //MetaKnight Song
-          if (cardidentifier == 000)      
+          if (cardidentifier == 287)      
           {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[56])));
             playfile(buffer);
             if (wave.isplaying) {
@@ -678,7 +679,7 @@ void loop()
           playcomplete(buffer);
         }
         //Meta Knight
-        if (CID == 123456789) 
+        if (CID == 287) 
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[26])));
           playcomplete(buffer);
         }
