@@ -37,13 +37,16 @@ const char string_26[] PROGMEM = "mk.wav";
 const char string_27[] PROGMEM = "shulk.wav";
 const char string_28[] PROGMEM = "sheik.wav";
 const char string_29[] PROGMEM = "ike.wav";
-  //Wave 4
+  //Wave 4 - Intros
 const char string_60[] PROGMEM = "robin.wav";
 const char string_61[] PROGMEM = "lucina.wav";
 const char string_62[] PROGMEM = "char.wav";
 const char string_63[] PROGMEM = "wario.wav";
 const char string_64[] PROGMEM = "pacman.wav";
 const char string_65[] PROGMEM = "ness.wav";
+const char string_66[] PROGMEM = "ganon.wav";
+const char string_67[] PROGMEM = "gren.wav";
+const char string_68[] PROGMEM = "jiggly.wav";
 //Songs
 const char string_30[] PROGMEM = "cfalc_s.wav";
 const char string_31[] PROGMEM = "samus_s.wav";
@@ -76,12 +79,15 @@ const char string_57[] PROGMEM = "shulk_s.wav";
 const char string_58[] PROGMEM = "sheik_s.wav";
 const char string_59[] PROGMEM = "ike_s.wav";
   //Wave 4
-const char string_66[] PROGMEM = "robin_s.wav";
-const char string_67[] PROGMEM = "lucina_s.wav";
-const char string_68[] PROGMEM = "char_s.wav";
-const char string_69[] PROGMEM = "wario_s.wav";
-const char string_70[] PROGMEM = "pacman_s.wav";
-const char string_71[] PROGMEM = "ness_s.wav";
+const char string_69[] PROGMEM = "robin_s.wav";
+const char string_70[] PROGMEM = "lucina_s.wav";
+const char string_71[] PROGMEM = "char_s.wav";
+const char string_72[] PROGMEM = "wario_s.wav";
+const char string_73[] PROGMEM = "pac_s.wav";
+const char string_74[] PROGMEM = "ness_s.wav";
+const char string_75[] PROGMEM = "ganon_s.wav";
+const char string_76[] PROGMEM = "gren_s.wav";
+const char string_77[] PROGMEM = "jiggly_s.wav";
 
 // Then set up a table to refer to your strings.
 
@@ -158,9 +164,15 @@ const char* const string_table[] PROGMEM =
   string_68,
   string_69,
   string_70,
-  string_71,  };
+  string_71,
+  string_72,
+  string_73,
+  string_74,
+  string_75,
+  string_76,
+  string_77,  };
 
-char buffer[71];
+char buffer[77];
 
 #define IRQ 6 // this trace must be cut and rewired!
 #define RESET 8
@@ -540,6 +552,78 @@ void loop()
               songplaying = true;
             }
           }
+          //Robin Song
+          if (CID == 801)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[69])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Lucina Song
+          if (CID == 545)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[70])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Charizard Song
+          if (CID == 1561)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[71])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Wario Song
+          if (CID == 1792)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[72])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Pac-Man Song
+          if (CID == 16435)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[73])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Ness Song
+          if (CID == 32802)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[74])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Gannondorf Song
+          if (CID == 66049)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[75])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Greninja Song
+          if (CID == 37403)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[76])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Jigglypuff Song
+          if (CID == 10009)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[77])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
         }
         
         if(!wave.isplaying) 
@@ -698,6 +782,52 @@ void loop()
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[29])));
           playcomplete(buffer);
         }
+        //Robin
+        if (CID == 801) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[60])));
+          playcomplete(buffer);
+        }
+        //Lucina
+        if (CID == 545) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[61])));
+          playcomplete(buffer);
+        }
+        //Charizard
+        if (CID == 1561) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[62])));
+          playcomplete(buffer);
+        }
+        //Wario
+        if (CID == 1792) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[63])));
+          playcomplete(buffer);
+        }
+        //Pac-Man
+        if (CID == 16435) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[64])));
+          playcomplete(buffer);
+        }
+        //Ness
+        if (CID == 32802) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[65])));
+          playcomplete(buffer);
+        }
+        //Gannondorf
+        if (CID == 66049) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[66])));
+          playcomplete(buffer);
+        }
+        //Greninja
+        if (CID == 37403) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[67])));
+          playcomplete(buffer);
+        }
+        //Jigglypuff
+        if (CID == 10009) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[68])));
+          playcomplete(buffer);
+        }
+        
       }
     }
     else 
