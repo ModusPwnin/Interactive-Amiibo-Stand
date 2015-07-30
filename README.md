@@ -1,6 +1,8 @@
 Interactive-Amiibo-Stand
 ========================
 
+*** I will only be updating v3_alt with new characters from now on ***
+
 Here is the code I'm currently using for my Amiibo stand!
 
 v1 will recognize an Amiibo and play a sound file once.
