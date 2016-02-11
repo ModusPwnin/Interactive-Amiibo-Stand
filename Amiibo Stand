@@ -69,6 +69,29 @@ const char string_96[] PROGMEM = "ryu.wav";
 const char string_97[] PROGMEM = "cloud.wav";
 const char string_98[] PROGMEM = "bayo.wav";
 const char string_99[] PROGMEM = "corrin.wav";
+  //Non-Smash Intros
+const char string_120[] PROGMEM = "inkg.wav";
+const char string_121[] PROGMEM = "inkb.wav";
+const char string_122[] PROGMEM = "squid.wav";
+const char string_123[] PROGMEM = "chibi.wav";
+const char string_124[] PROGMEM = "yarn.wav";
+const char string_125[] PROGMEM = "isab.wav";
+const char string_126[] PROGMEM = "nook.wav";
+const char string_127[] PROGMEM = "kk.wav";
+const char string_128[] PROGMEM = "mabel.wav";
+const char string_129[] PROGMEM = "digby.wav";
+const char string_130[] PROGMEM = "lott.wav";
+const char string_131[] PROGMEM = "cyrus.wav";
+const char string_132[] PROGMEM = "reese.wav";
+const char string_133[] PROGMEM = "blath.wav";
+const char string_134[] PROGMEM = "cele.wav";
+const char string_135[] PROGMEM = "reset.wav";
+const char string_136[] PROGMEM = "kicks.wav";
+const char string_137[] PROGMEM = "timtom.wav";
+const char string_138[] PROGMEM = "kappn.wav";
+const char string_139[] PROGMEM = "rover.wav";
+const char string_140[] PROGMEM = "wlink.wav";
+
 //Songs
 const char string_30[] PROGMEM = "cfalc_s.wav";
 const char string_31[] PROGMEM = "samus_s.wav";
@@ -110,7 +133,7 @@ const char string_74[] PROGMEM = "ness_s.wav";
 const char string_75[] PROGMEM = "ganon_s.wav";
 const char string_76[] PROGMEM = "gren_s.wav";
 const char string_77[] PROGMEM = "jiggly_s.wav";
-  //Wave 5
+  //Wave 5+
 const char string_79[] PROGMEM = "dpit_s.wav";
 const char string_100[] PROGMEM = "palu_s.wav";
 const char string_101[] PROGMEM = "zss_s.wav";
@@ -132,7 +155,28 @@ const char string_116[] PROGMEM = "ryu_s.wav";
 const char string_117[] PROGMEM = "cloud_s.wav";
 const char string_118[] PROGMEM = "bayo_s.wav";
 const char string_119[] PROGMEM = "corrin_s.wav";
-
+  //Non-Smash
+const char string_141[] PROGMEM = "inkg_s.wav";
+const char string_142[] PROGMEM = "inkb_s.wav";
+const char string_143[] PROGMEM = "squid_s.wav";
+const char string_144[] PROGMEM = "chibi_s.wav";
+const char string_145[] PROGMEM = "yarn_s.wav";
+const char string_146[] PROGMEM = "isab_s.wav";
+const char string_147[] PROGMEM = "nook_s.wav";
+const char string_148[] PROGMEM = "kk_s.wav";
+const char string_149[] PROGMEM = "mabel_s.wav";
+const char string_150[] PROGMEM = "digby_s.wav";
+const char string_151[] PROGMEM = "lott_s.wav";
+const char string_152[] PROGMEM = "cyrus_s.wav";
+const char string_153[] PROGMEM = "reese_s.wav";
+const char string_154[] PROGMEM = "blath_s.wav";
+const char string_155[] PROGMEM = "cele_s.wav";
+const char string_156[] PROGMEM = "reset_s.wav";
+const char string_157[] PROGMEM = "kicks_s.wav";
+const char string_158[] PROGMEM = "timtom_s.wav";
+const char string_159[] PROGMEM = "kappn_s.wav";
+const char string_160[] PROGMEM = "rover_s.wav";
+const char string_161[] PROGMEM = "wlink_s.wav";
 // Then set up a table to refer to your strings.
 
 const char* const string_table[] PROGMEM = 	   
@@ -257,9 +301,52 @@ const char* const string_table[] PROGMEM =
   string_116,
   string_117,
   string_118,
-  string_119,  };
+  string_119,
+  string_120,
+  string_121,
+  string_122,
+  string_123,
+  string_124,
+  string_125,
+  string_126,
+  string_127,
+  string_128,
+  string_129,
+  string_130,
+  string_131,
+  string_132,
+  string_133,
+  string_134,
+  string_135,
+  string_136,
+  string_137,
+  string_138,
+  string_139,
+  string_140,
+  string_141,
+  string_142,
+  string_143,
+  string_144,
+  string_145,
+  string_146,
+  string_147,
+  string_148,
+  string_149,
+  string_150,
+  string_151,
+  string_152,
+  string_153,
+  string_154,
+  string_155,
+  string_156,
+  string_157,
+  string_158,
+  string_159,
+  string_160,
+  string_161,
+  };
 
-char buffer[119];
+char buffer[30];
 
 #define IRQ 6 // this trace must be cut and rewired!
 #define RESET 8
@@ -879,6 +966,176 @@ void loop()
               songplaying = true;
             }
           }
+        //Non-Smash
+          //Inkling Girl Song
+          if (CID == 65544)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[141])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Inkling Boy Song
+          if (CID == 131080)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[142])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Squid Song
+          if (CID == 196616)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[143])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Chibi Robo Song
+          if (CID == 49186)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[144])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Yarn Yoshi Song
+          if (CID == 33620736)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[145])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Isabelle Song
+          if (CID == 98561)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[146])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Tom Nook Song
+          if (CID == 33537)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[147])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //KK Song
+          if (CID == 33281)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[148])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mabel Song
+          if (CID == 34817)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[149])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Digby Song
+          if (CID == 35841)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[150])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Lottie Song
+          if (CID == 49409)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[151])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Cyrus Song
+          if (CID == 35585)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[152])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Reese Song
+          if (CID == 35329)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[153])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Blathers Song
+          if (CID == 37377)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[154])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Celeste Song
+          if (CID == 37633)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[155])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Resetti Song
+          if (CID == 36353)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[156])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Kicks Song
+          if (CID == 37889)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[157])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Timmy and Tommy Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[158])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Kapp'n Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[159])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Rover Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[160])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Wolf Link Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[161])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          
         }
         
         if(!wave.isplaying) 
@@ -1187,7 +1444,111 @@ void loop()
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[99])));
           playcomplete(buffer);
         }
-        
+        //Inkling Girl
+        if (CID == 65544) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[120])));
+          playcomplete(buffer);
+        }
+        //Inkling Boy
+        if (CID == 131080) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[121])));
+          playcomplete(buffer);
+        }
+        //Squid
+        if (CID == 196616) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[122])));
+          playcomplete(buffer);
+        }
+        //Chibi
+        if (CID == 49186) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[123])));
+          playcomplete(buffer);
+        }
+        //Yarn Yoshis
+        if (CID == 33620736) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[124])));
+          playcomplete(buffer);
+        }
+        //Isabelle
+        if (CID == 98561) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[125])));
+          playcomplete(buffer);
+        }
+        //Tom Nook
+        if (CID == 33537) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[126])));
+          playcomplete(buffer);
+        }
+        //K.K. Slider
+        if (CID == 33281) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[127])));
+          playcomplete(buffer);
+        }
+        //Mabel
+        if (CID == 34817) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[128])));
+          playcomplete(buffer);
+        }
+        //Digby
+        if (CID == 35841) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[129])));
+          playcomplete(buffer);
+        }
+        //Lottie
+        if (CID == 49409) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[130])));
+          playcomplete(buffer);
+        }
+        //Cyrus
+        if (CID == 35585) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[131])));
+          playcomplete(buffer);
+        }
+        //Reese
+        if (CID == 35329) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[132])));
+          playcomplete(buffer);
+        }
+        //Blathers
+        if (CID == 37377) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[133])));
+          playcomplete(buffer);
+        }
+        //Celeste
+        if (CID == 37633) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[134])));
+          playcomplete(buffer);
+        }
+        //Resetti
+        if (CID == 36353) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[135])));
+          playcomplete(buffer);
+        }
+        //Kicks
+        if (CID == 37889) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[136])));
+          playcomplete(buffer);
+        }
+        //Timmy and Tommy
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[137])));
+          playcomplete(buffer);
+        }
+        //Kapp'n
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[138])));
+          playcomplete(buffer);
+        }
+        //Rover
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[139])));
+          playcomplete(buffer);
+        }
+        //Wolf Link
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[140])));
+          playcomplete(buffer);
+        }
       }
     }
     else 
@@ -1197,8 +1558,8 @@ void loop()
        // Serial.println("CID else");
         wave.stop();
       //}  
-      lastcard = 123456;
-      currentcard = 654321;
+      lastcard = 9999999999999;
+      currentcard = 9999999999998;
       songplaying = false;
     }
   } 
@@ -1211,8 +1572,8 @@ void loop()
         //Serial.println("UID else");
         wave.stop();
       //}  
-      lastcard = 321123;
-      currentcard = 123321;
+      lastcard = 9999999999999;
+      currentcard = 9999999999998;
       songplaying = false;
     }  
 }
