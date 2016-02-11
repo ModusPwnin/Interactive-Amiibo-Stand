@@ -112,26 +112,26 @@ const char string_76[] PROGMEM = "gren_s.wav";
 const char string_77[] PROGMEM = "jiggly_s.wav";
   //Wave 5
 const char string_79[] PROGMEM = "dpit_s.wav";
-const char string_100[] PROGMEM = "palu.wav";
-const char string_101[] PROGMEM = "zss.wav";
-const char string_102[] PROGMEM = "dmario.wav";
-const char string_103[] PROGMEM = "bowjr.wav";
-const char string_104[] PROGMEM = "olimar.wav";
-const char string_105[] PROGMEM = "mrgw.wav";
-const char string_106[] PROGMEM = "rob.wav";
-const char string_107[] PROGMEM = "duck.wav";
-const char string_108[] PROGMEM = "miib.wav";
-const char string_109[] PROGMEM = "miis.wav";
-const char string_110[] PROGMEM = "miig.wav";
-const char string_111[] PROGMEM = "mewtwo.wav";
-const char string_112[] PROGMEM = "falco.wav";
-const char string_113[] PROGMEM = "lucas.wav";
-const char string_114[] PROGMEM = "shovelk.wav";
-const char string_115[] PROGMEM = "roy.wav";
-const char string_116[] PROGMEM = "ryu.wav";
-const char string_117[] PROGMEM = "cloud.wav";
-const char string_118[] PROGMEM = "bayo.wav";
-const char string_119[] PROGMEM = "corrin.wav";
+const char string_100[] PROGMEM = "palu_s.wav";
+const char string_101[] PROGMEM = "zss_s.wav";
+const char string_102[] PROGMEM = "dmaro_s.wav";
+const char string_103[] PROGMEM = "bowjr_s.wav";
+const char string_104[] PROGMEM = "olimar_s.wav";
+const char string_105[] PROGMEM = "mrgw_s.wav";
+const char string_106[] PROGMEM = "rob_s.wav";
+const char string_107[] PROGMEM = "duck_s.wav";
+const char string_108[] PROGMEM = "miib_s.wav";
+const char string_109[] PROGMEM = "miis_s.wav";
+const char string_110[] PROGMEM = "miig_s.wav";
+const char string_111[] PROGMEM = "mewtwo_s.wav";
+const char string_112[] PROGMEM = "falco_s.wav";
+const char string_113[] PROGMEM = "lucas_s.wav";
+const char string_114[] PROGMEM = "shovelk_s.wav";
+const char string_115[] PROGMEM = "roy_s.wav";
+const char string_116[] PROGMEM = "ryu_s.wav";
+const char string_117[] PROGMEM = "cloud_s.wav";
+const char string_118[] PROGMEM = "bayo_s.wav";
+const char string_119[] PROGMEM = "corrin_s.wav";
 
 // Then set up a table to refer to your strings.
 
