@@ -47,6 +47,28 @@ const char string_65[] PROGMEM = "ness.wav";
 const char string_66[] PROGMEM = "ganon.wav";
 const char string_67[] PROGMEM = "gren.wav";
 const char string_68[] PROGMEM = "jiggly.wav";
+  //Wave 5+ - Intros
+const char string_78[] PROGMEM = "dpit.wav";
+const char string_80[] PROGMEM = "palu.wav";
+const char string_81[] PROGMEM = "zss.wav";
+const char string_82[] PROGMEM = "dmario.wav";
+const char string_83[] PROGMEM = "bowjr.wav";
+const char string_84[] PROGMEM = "olimar.wav";
+const char string_85[] PROGMEM = "mrgw.wav";
+const char string_86[] PROGMEM = "rob.wav";
+const char string_87[] PROGMEM = "duck.wav";
+const char string_88[] PROGMEM = "miib.wav";
+const char string_89[] PROGMEM = "miis.wav";
+const char string_90[] PROGMEM = "miig.wav";
+const char string_91[] PROGMEM = "mewtwo.wav";
+const char string_92[] PROGMEM = "falco.wav";
+const char string_93[] PROGMEM = "lucas.wav";
+const char string_94[] PROGMEM = "shovelk.wav";
+const char string_95[] PROGMEM = "roy.wav";
+const char string_96[] PROGMEM = "ryu.wav";
+const char string_97[] PROGMEM = "cloud.wav";
+const char string_98[] PROGMEM = "bayo.wav";
+const char string_99[] PROGMEM = "corrin.wav";
 //Songs
 const char string_30[] PROGMEM = "cfalc_s.wav";
 const char string_31[] PROGMEM = "samus_s.wav";
@@ -88,11 +110,34 @@ const char string_74[] PROGMEM = "ness_s.wav";
 const char string_75[] PROGMEM = "ganon_s.wav";
 const char string_76[] PROGMEM = "gren_s.wav";
 const char string_77[] PROGMEM = "jiggly_s.wav";
+  //Wave 5
+const char string_79[] PROGMEM = "dpit_s.wav";
+const char string_100[] PROGMEM = "palu.wav";
+const char string_101[] PROGMEM = "zss.wav";
+const char string_102[] PROGMEM = "dmario.wav";
+const char string_103[] PROGMEM = "bowjr.wav";
+const char string_104[] PROGMEM = "olimar.wav";
+const char string_105[] PROGMEM = "mrgw.wav";
+const char string_106[] PROGMEM = "rob.wav";
+const char string_107[] PROGMEM = "duck.wav";
+const char string_108[] PROGMEM = "miib.wav";
+const char string_109[] PROGMEM = "miis.wav";
+const char string_110[] PROGMEM = "miig.wav";
+const char string_111[] PROGMEM = "mewtwo.wav";
+const char string_112[] PROGMEM = "falco.wav";
+const char string_113[] PROGMEM = "lucas.wav";
+const char string_114[] PROGMEM = "shovelk.wav";
+const char string_115[] PROGMEM = "roy.wav";
+const char string_116[] PROGMEM = "ryu.wav";
+const char string_117[] PROGMEM = "cloud.wav";
+const char string_118[] PROGMEM = "bayo.wav";
+const char string_119[] PROGMEM = "corrin.wav";
 
 // Then set up a table to refer to your strings.
 
 const char* const string_table[] PROGMEM = 	   
-{   
+{
+    
   string_0,
   string_1,
   string_2,
@@ -170,9 +215,51 @@ const char* const string_table[] PROGMEM =
   string_74,
   string_75,
   string_76,
-  string_77,  };
+  string_77,
+  string_78,
+  string_79,
+  string_80,
+  string_81,
+  string_82,
+  string_83,
+  string_84,
+  string_85,
+  string_86,
+  string_87,
+  string_88,
+  string_89,
+  string_90,
+  string_91,
+  string_92,
+  string_93,
+  string_94,
+  string_95,
+  string_96,
+  string_97,
+  string_98,
+  string_99,
+  string_100,
+  string_101,
+  string_102,
+  string_103,
+  string_104,
+  string_105,
+  string_106,
+  string_107,
+  string_108,
+  string_109,
+  string_110,
+  string_111,
+  string_112,
+  string_113,
+  string_114,
+  string_115,
+  string_116,
+  string_117,
+  string_118,
+  string_119,  };
 
-char buffer[77];
+char buffer[119];
 
 #define IRQ 6 // this trace must be cut and rewired!
 #define RESET 8
@@ -624,6 +711,174 @@ void loop()
               songplaying = true;
             }
           }
+          //Dark Pit Song
+          if (CID == 16647)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[79])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Palutena Song
+          if (CID == 16903)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[100])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Zero Suit Song
+          if (CID == 114693)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[101])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Dr Mario Song
+          if (CID == 65536)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[102])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Bowser Jr Song
+          if (CID == 1536)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[103])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Olimar Song
+          if (CID == 81926)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[104])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mr Game & Watch Song
+          if (CID == 32775)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[105])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Rob Song
+          if (CID == 33031)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[106])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Duck Hunt Song
+          if (CID == 33287)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[107])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mii Brawler Song
+          if (CID == 49159)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[108])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mii Swordfighter Song
+          if (CID == 114695)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[109])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mii Gunner Song
+          if (CID == 180231)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[110])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Mewtwo Song
+          if (CID == 38425)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[111])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Falco Song
+          if (CID == 33029)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[112])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Lucas Song
+          if (CID == 33058)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[113])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Shovel Knight Song
+          if (CID == 49205)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[114])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Roy Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[115])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Ryu Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[116])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Cloud Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[117])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Corrin Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[118])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
+          //Bayonetta Song
+          if (CID == 1234)      
+          {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[119])));
+            playfile(buffer);
+            if (wave.isplaying) {
+              songplaying = true;
+            }
+          }
         }
         
         if(!wave.isplaying) 
@@ -827,6 +1082,111 @@ void loop()
         {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[68])));
           playcomplete(buffer);
         }
+        //Dark Pit
+        if (CID == 16647) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[78])));
+          playcomplete(buffer);
+        }
+        //Palutena
+        if (CID == 16903) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[80])));
+          playcomplete(buffer);
+        }
+        //Zero suit
+        if (CID == 114693) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[81])));
+          playcomplete(buffer);
+        }
+        //Dr Mario
+        if (CID == 65536) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[82])));
+          playcomplete(buffer);
+        }
+        //Bowser Jr
+        if (CID == 1536) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[83])));
+          playcomplete(buffer);
+        }
+        //Olimar
+        if (CID == 81926) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[84])));
+          playcomplete(buffer);
+        }
+        //Mr Game & Watch
+        if (CID == 32775) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[85])));
+          playcomplete(buffer);
+        }
+        //Rob
+        if (CID == 33031) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[86])));
+          playcomplete(buffer);
+        }
+        //Duck Hunt
+        if (CID == 33287) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[87])));
+          playcomplete(buffer);
+        }
+        //Mii Brawler
+        if (CID == 49159) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[88])));
+          playcomplete(buffer);
+        }
+        //Mii Swordfighter
+        if (CID == 114695) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[89])));
+          playcomplete(buffer);
+        }
+        //Mii Gunner
+        if (CID == 180231) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[90])));
+          playcomplete(buffer);
+        }
+        //Mewtwo
+        if (CID == 38425) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[91])));
+          playcomplete(buffer);
+        }
+        //Falco
+        if (CID == 33029) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[92])));
+          playcomplete(buffer);
+        }
+        //Lucas
+        if (CID == 33058) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[93])));
+          playcomplete(buffer);
+        }
+        //Shovel Knight
+        if (CID == 49205) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[94])));
+          playcomplete(buffer);
+        }
+        //Roy
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[95])));
+          playcomplete(buffer);
+        }
+        //Ryu
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[96])));
+          playcomplete(buffer);
+        }
+        //Cloud
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[97])));
+          playcomplete(buffer);
+        }
+        //Corrin
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[98])));
+          playcomplete(buffer);
+        }
+        //Bayonetta
+        if (CID == 1234) 
+        {strcpy_P(buffer, (char*)pgm_read_word(&(string_table[99])));
+          playcomplete(buffer);
+        }
         
       }
     }
@@ -899,6 +1259,7 @@ void playfile(char *name) {
   if (!file.open(root, name)) {
     PgmPrint("Couldn't open file ");
     Serial.print(name);
+    PgmPrint("\n");
     return;
   }
   if (!wave.create(file)) {
