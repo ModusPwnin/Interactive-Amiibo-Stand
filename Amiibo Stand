@@ -381,7 +381,7 @@ uint8_t uidLength; // Length of the UID (4 or 7 bytes depending on ISO14443A car
 //////////////////////////////////// SETUP
 
 void setup() {
-  // set up Serial library at 9600 bps
+  // set up Serial library at 115200 bps
   Serial.begin(115200);
     
   PgmPrintln("Amiibo Scanner");
@@ -1558,8 +1558,8 @@ void loop()
        // Serial.println("CID else");
         wave.stop();
       //}  
-      lastcard = 9999999999999;
-      currentcard = 9999999999998;
+      lastcard = 999999999;
+      currentcard = 999999998;
       songplaying = false;
     }
   } 
@@ -1572,8 +1572,8 @@ void loop()
         //Serial.println("UID else");
         wave.stop();
       //}  
-      lastcard = 9999999999999;
-      currentcard = 9999999999998;
+      lastcard = 999999999;
+      currentcard = 999999998;
       songplaying = false;
     }  
 }
